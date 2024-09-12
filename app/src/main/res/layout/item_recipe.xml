@@ -26,7 +26,7 @@
             android:layout_alignTop="@id/image_view_recipe_icon"
             android:layout_toEndOf="@id/image_view_recipe_icon"
             android:text="Recipe Title"
-            android:textSize="18dp"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
         <TextView
