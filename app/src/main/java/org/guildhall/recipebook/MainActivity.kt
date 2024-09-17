@@ -2,6 +2,7 @@ package org.guildhall.recipebook
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Parcelable
 import android.widget.Button
 import android.widget.LinearLayout
 import androidx.activity.enableEdgeToEdge
@@ -25,6 +26,9 @@ class MainActivity : AppCompatActivity() {
         val view = findViewById<LinearLayout>(R.id.main)
 
         val intent = Intent(this, RecipesRecyclerActivity::class.java)
+        intent.putExtra("category", "breakfast")
+        //intent.putExtra("key", Parcelable) // parcelable type
+
         val b1 = view.findViewById<Button>(R.id.button_breakfast)
         b1.setOnClickListener { startActivity(intent) }
     }
