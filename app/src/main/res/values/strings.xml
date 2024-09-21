@@ -3,4 +3,6 @@
     <string name="category_breakfast">Breakfast</string>
     <string name="category_lunch">Lunch</string>
     <string name="category_dinner">Dinner</string>
+    <string name="recipes">Recipes</string>
+    <string name="add_recipe">Add recipe</string>
 </resources>

@@ -23,7 +23,6 @@
         app:cardUseCompatPadding="true">
 
         <LinearLayout
-            android:id="@+id/button_breakfast"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -31,15 +30,15 @@
             android:padding="8dp">
 
             <Button
-                android:id="@+id/button_lunch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="24dp"
+                android:id="@+id/button_breakfast"
                 android:text="@string/category_breakfast" />
 
             <Button
-                android:id="@+id/button_dinner"
+                android:id="@+id/button_lunch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -47,15 +46,24 @@
                 android:text="@string/category_lunch" />
 
             <Button
+                android:id="@+id/button_dinner"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="24dp"
                 android:text="@string/category_dinner" />
 
+
+
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
 
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        app:menu="@menu/bottom_nav"/>
 
 </LinearLayout>
