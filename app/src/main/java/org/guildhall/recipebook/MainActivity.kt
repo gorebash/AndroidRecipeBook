@@ -1,16 +1,16 @@
 package org.guildhall.recipebook
 
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
+import android.view.MenuItem
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import org.guildhall.recipebook.R.id
+import androidx.fragment.app.commit
+import com.google.android.material.navigation.NavigationBarView
 import org.guildhall.recipebook.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListener {
 
     private lateinit var binding:ActivityMainBinding
 
@@ -20,26 +20,28 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(id.main)) { v, insets ->
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        val intent = Intent(this, RecipesRecyclerActivity::class.java)
-        binding.buttonBreakfast.setOnClickListener {
-            intent.putExtra("category", "breakfast")
-            startActivity(intent)
+        binding.bottomNav.setOnItemSelectedListener(this)
+    }
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.nav_recipes) {
+            supportFragmentManager.commit {
+                replace(R.id.frame_content, RecipeFragment())
+            }
+            return true
+        } else if (item.itemId == R.id.nav_add_recipe) {
+            supportFragmentManager.commit {
+                replace(R.id.frame_content, AddRecipeFragment())
+            }
+            return true
         }
 
-        binding.buttonLunch.setOnClickListener {
-            intent.putExtra("category", "lunch")
-            startActivity(intent)
-        }
-
-        binding.buttonDinner.setOnClickListener {
-            intent.putExtra("category", "dinner")
-            startActivity(intent)
-        }
+        return false
     }
 }
